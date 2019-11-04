@@ -1,8 +1,9 @@
 
 # install.packages("ggplot2")
-# yes
 library(ggplot2)
+# install.packages("data.table")
 library(timelineR)
+require(data.table)
 
 
 # Getting Cities
@@ -58,8 +59,8 @@ cities = subset(cities, select=-c(year, month, day, hour))
 cities$station <- as.factor(cities$station)
 cities$wd <- as.factor(cities$wd)
 
-# Pollutants are: SO2, NO2, CO, O3
 
+# Pollutants are: SO2, NO2, CO, O3
 plot_grob <- plot_timeline(cities)
 
 
