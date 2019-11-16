@@ -14,3 +14,40 @@ NO2: NO2 concentration (ug/m^3)                		   CO: CO concentration (ug/m^3
 PRES: pressure (hPa)		          DEWP: dew point temperature (degree Celsius)
 RAIN: precipitation (mm)					      		   wd: wind direction
 WSPM: wind speed (m/s)			  station: name of the air-quality monitoring site
+
+
+### Goal 
+
+Are ultimate goal is forecast the Six pollutants provided to us - PM2.5, PM10, 
+NO2, SO2, CO, and O3. 
+
+### Approach:
+
+We noticed that SO2, CO, and O3 forecasting was possible since the data
+suggested a trend. For NO2 and PM, this was not present and it seemed 
+independent of time. So at a high-level we implemented the following algorithm:
+
+<pre>
+1. Combine all the Cities and Create two K-NN models for NO2 and PM. 
+2. Take advantage that SO2, CO, and O3 are a time series and create a 
+recurrent neural network of each. 
+3. Retrieve Predicted SO2, CO, O3. 
+4. Use Predicted values as inputs into K-NN to predict NO2 and PM.
+</pre>
+
+### Other Ideas:
+1. Use LSTM RNN for multivariate predictions.
+2. Use K-Means to cluster data, save to an index,
+and Run approximate nearest neighbors: 
+    - K-NN scalablity issue: Too many dimensions that cannot be reduced.
+    - K-NN scalability to many data points.
+    
+### TODO
+- Build Following Models:
+    - RNN CO
+    - RNN O3
+    - Build PM2.5
+- Resolve K-NN scalability issue.
+- Changing frequency from hourly to daily, weekly, etc. and observing 
+if trend exists. 
+- Building a visualization map using google-maps-api
