@@ -1,0 +1,28 @@
+{
+	"data" : {
+		"Wanshouxigong" : {
+			"idx" : 11,
+			"SO2" :  {
+				"model": {
+					"loss": "mean_squared_error",
+					"optimizer": "adam",
+					"save_dir": "saved_models",
+					"layers": [
+						{
+							"type": "simple",
+							"units": 10,
+							"input_timesteps": 1,
+							"input_dim": 1,
+							"return_seq": false
+						},
+						{
+							"type": "dense",
+							"units": 1,
+							"activation": "linear"
+						}
+					]
+				}
+			}
+		}
+	}
+}
